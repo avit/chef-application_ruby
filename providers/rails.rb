@@ -65,6 +65,9 @@ action :before_migrate do
       group new_resource.group
       mode '0755'
     end
+    link "#{new_resource.release_path}/log" do
+      to "#{new_resource.path}/shared/log"
+    end
     link "#{new_resource.release_path}/vendor/bundle" do
       to "#{new_resource.path}/shared/vendor_bundle"
     end
