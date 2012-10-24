@@ -65,6 +65,14 @@ action :before_migrate do
       group new_resource.group
       mode '0755'
     end
+    directory "#{new_resource.release_path}/tmp" do
+      owner new_resource.owner
+      group new_resource.group
+      mode '0755'
+    end
+    link "#{new_resource.release_path}/tmp/pids" do
+      to "#{new_resource.path}/shared/pids"
+    end
     link "#{new_resource.release_path}/log" do
       to "#{new_resource.path}/shared/log"
     end
